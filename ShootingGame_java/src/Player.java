@@ -26,7 +26,11 @@ public class Player  extends Character implements KeyListener{
 			}
 		
 		if (e.getKeyCode()==KeyEvent.VK_SPACE) {
+			
+			GameWorld.playerBullets.add(new PlayerBullet(x,y,5,-10));
 			GameWorld.playerBullets.add(new PlayerBullet(x,y,0,-10));
+			GameWorld.playerBullets.add(new PlayerBullet(x,y,-5,-10));
+			
 			System.out.println("の数"+GameWorld.playerBullets.size());
 		}
 	}
@@ -44,12 +48,7 @@ public class Player  extends Character implements KeyListener{
 		// TODO 自動生成されたメソッド・スタブ
 		
 	}
-	public void move() {
-		super.move();
-		if(x<0)
-			x=0;
-		if(x>370)
-			x=370;
-	}
 	
+	
+
 }
