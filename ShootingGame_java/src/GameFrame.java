@@ -14,26 +14,16 @@ public class GameFrame extends MyFrame{
 			GameWorld.player.move();
 			movePlayerBullets();
 			moveEnemies();
-			
+			sleep (0.03);
 			
 			for(int i =0; i<GameWorld.enemies.size();i++) {
 				Enemy e= GameWorld.enemies.get (i);
-				if (Math.abs(e.x-GameWorld.player.x)<=30&&
-						Math.abs(e.y-GameWorld.player.y)<=30)
+				if (e.x==GameWorld.player.x && )
+					e.y==GameWorld.player.y)
                      { System.out.println("やられた!");}
 			}
-			sleep (0.03);
 			}
 		}
-		private void moveEnemies() {
-			for(int i =0 ; i <GameWorld.enemies.size();i ++) {
-				Enemy e =GameWorld.enemies.get(i);
-				e.draw(this);
-				e.move();
-			}
-	// TODO 自動生成されたメソッド・スタブ
-	
-}
 		public void movePlayerBullets() {
 			int i =0;
 			while (i<GameWorld.playerBullets.size()) {
