@@ -19,6 +19,18 @@ public class GameFrame extends MyFrame{
 			checkPlayerBulletsAndEnemies();
 			
 			
+			if (GameWorld.enemies.size()==0) {//A
+				setColor(0,0,0);
+				drawString("クリア!",100,200,40);
+			} else if(GameWorld.player.y<0) {//B
+				setColor(0,0,0);
+				drawString("ゲームオーバー!",50,200,40);
+				
+			}
+				
+			
+			sleep(0.03);
+			
 			for (int i =0;i<GameWorld.enemies.size();i++) {
 				Enemy e =GameWorld.enemies.get(i);
 				if(e.x==GameWorld.player.x &&
@@ -50,6 +62,13 @@ public class GameFrame extends MyFrame{
 			e.draw(this);
 			e.move();
 		}
+		   int i =0;
+		   while(i<GameWorld.enemies.size()) {
+			   Enemy e=GameWorld.enemies.get(i);
+			   if(e.y>400) {
+				   GameWorld.enemies.remove(i);
+			   }else {i++;}
+		   }
 		}
 		public void movePlayerBullets() {
 			int i =0;
