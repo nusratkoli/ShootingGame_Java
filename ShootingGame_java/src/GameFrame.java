@@ -102,7 +102,7 @@ public class GameFrame extends MyFrame{
 		
 		 
          public boolean checkHit(Character a, Character b) {//A
-        	 if (Math.abs(a.x-b.x)<=30 && Math.abs(a.y-b.y)<=30) {
+        	 if (Math.abs(a.x-b.x)<=20 && Math.abs(a.y-b.y)<=20) {
         		 return true;}
         	 else {
         		 return false;
