@@ -5,7 +5,7 @@ public class GameFrame extends MyFrame{
 	
 		GameWorld.player=new Player(100,300,0,0);
 		addKeyListener(GameWorld.player);
-		GameWorld.stage=1;
+		GameWorld.stage=2;
 		GameWorld.score=0;
 		
 		while(true) {
@@ -41,8 +41,8 @@ public class GameFrame extends MyFrame{
 				drawString("ゲームオーバー!",50,200,40);
 				
 				if (GameWorld.enterPressed) {//E
+					GameWorld.stage=2;
 					GameWorld.stage=1;
-					GameWorld.stage=0;
 					break;}
 				}
 				
