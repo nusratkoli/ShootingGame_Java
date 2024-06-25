@@ -7,7 +7,7 @@ public class GameFrame extends MyFrame{
 		addKeyListener(GameWorld.player);
 		GameWorld.playerBullets=new Vector<PlayerBullet>();
 		GameWorld.enemies=new Vector<Enemy>();
-		GameWorld.enemies.add(new EnemyBase (100,50,1,0));
+		GameWorld.enemies.add(new EnemyBase(100, 50, 10, 0));
 		
 		while(true) {
 			clear();
@@ -15,17 +15,41 @@ public class GameFrame extends MyFrame{
 			GameWorld.player.move();
 			movePlayerBullets();
 			moveEnemies();
+			checkPlayerBulletsAndEnemies();
+			checkPlayerBulletsAndEnemies();
+			
+			
+			for (int i =0;i<GameWorld.enemies.size();i++) {
+				Enemy e =GameWorld.enemies.get(i);
+				if(e.x==GameWorld.player.x &&
+						e.y==GameWorld.player.y) {
+					System.out.println("やられた");
+					GameWorld.player.y=-1000;
+				}
+			}
+			
+			for (int i =0; i<GameWorld.enemies.size(); i++) {
+				Enemy e =GameWorld.enemies.get(i);
+				e.draw(this);
+				e.move();
+			}
+		
 			
 			
 			
-			for(int i =0; i<GameWorld.enemies.size();i++) {
-				Enemy e= GameWorld.enemies.get (i);
-				if (e.x==GameWorld.player.x && 
-					e.y==GameWorld.player.y)
-                     { System.out.println("やられた!");}
+		
+
 				sleep (0.03);
+				}
+			
 			}
-			}
+        
+           public void moveEnemies() {
+		   for (int i = 0; i <GameWorld.enemies.size();i++) {
+			Enemy e=GameWorld.enemies.get(i);
+			e.draw(this);
+			e.move();
+		}
 		}
 		public void movePlayerBullets() {
 			int i =0;
@@ -39,21 +63,55 @@ public class GameFrame extends MyFrame{
 				}
 				else {
 				i++;
-			}
+			         }
 				
+			               }
+		
+		                    }
+		
+		
+		
+		
+		
+		
+		
+		public void checkPlayerBulletsAndEnemies() {
+			int i =0;
+			while (i<GameWorld.playerBullets.size()) {
+				PlayerBullet b=GameWorld.playerBullets.get(i);
+				int j = 0;
+				int hits = 0;
+				while(j<GameWorld.enemies.size()) {
+					Enemy e =GameWorld.enemies.get(j);
+					
+					if (checkHit(e,b)) {
+						System.out.println("あたり");
+						hits++;
+						e.life--;}
+					if (e.life<=0) {
+						GameWorld.enemies.remove(j);
+					}else {
+					j++;}
+				} if (hits>0) {GameWorld.playerBullets.remove(i);}
+				else {
+				i++;}
 			}
 			
+			
+		}
 		
-		}
-		public void moveEnemies() {
-			for (int i = 0; i <GameWorld.enemies.size();i++) {
-				Enemy e=GameWorld.enemies.get(i);
-				e.draw(this);
-				e.move();
-			}
-		}
- }
-
+		 
+         public boolean checkHit(Character a, Character b) {//A
+        	 if (Math.abs(a.x-b.x)<=30 && Math.abs(a.y-b.y)<=30) {
+        		 return true;}
+        	 else {
+        		 return false;
+        	 }
+        	 }
+         }
+	
+        
+ 
 
 
 	
