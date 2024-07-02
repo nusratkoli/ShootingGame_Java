@@ -27,10 +27,10 @@ public class EnemyBase extends Enemy{
 			GameWorld.enemies.add(new RandomEnemy(x,y,0,GameWorld.stage));
 		}
 		if (Math.random()<0.05){
-			GameWorld.enemies.add(new RandomEnemy(x,y,0,GameWorld.stage));
+			GameWorld.enemies.add(new DropEnemy(x,y,0,GameWorld.stage));
 		}
 		if (Math.random()<0.05){
-			GameWorld.enemies.add(new RandomEnemy(x,y,0,GameWorld.stage));
+			GameWorld.enemies.add(new CurveEnemy(x,y,0,GameWorld.stage));
 		}
 	
 	}
